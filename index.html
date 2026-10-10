@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Engineering portfolio of Andrew Lewis, Mechanical Engineering student at the University of Louisville J.B. Speed School.">
+<title>Andrew Lewis Portfolio</title>
+<style>:root{color-scheme:light}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: an engineering drawing set. Each project is a "sheet" with a title block, notes, and photos. */
+:root{
+  --paper:#eceeed; --sheet:#f7f8f7; --ink:#15181b; --ink-2:#4a5157; --rule:#c5cbcc; --accent:#c8202b; --accent-ink:#ffffff;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#0f1113; --sheet:#171a1d; --ink:#e6e9ea; --ink-2:#a3abb0; --rule:#2e3438; --accent:#ff4a4f; --accent-ink:#140405; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#0f1113; --sheet:#171a1d; --ink:#e6e9ea; --ink-2:#a3abb0; --rule:#2e3438; --accent:#ff4a4f; --accent-ink:#140405; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:grid;gap:28px}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:.01em;text-wrap:balance;margin:0;line-height:1.02}
+p{margin:0}
+.label{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+
+/* Cover */
+.cover{background:var(--sheet);border:1.5px solid var(--ink);display:grid;grid-template-columns:1.35fr 1fr}
+.cover-main{padding:32px 32px 28px;display:grid;gap:18px;align-content:start;min-width:0}
+.cover h1{font-size:clamp(46px,8vw,86px);text-transform:uppercase}
+.cover h1 span{color:var(--accent)}
+.lede{font-size:19px;max-width:34em}
+.links{display:flex;flex-wrap:wrap;gap:10px 20px;font-family:var(--mono);font-size:13px}
+.cover-photo{border-left:1.5px solid var(--ink);min-height:320px;position:relative;margin:0}
+.cover-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover-photo figcaption{position:absolute;left:0;bottom:0;background:var(--ink);color:var(--sheet);font-family:var(--mono);font-size:11px;padding:6px 10px;letter-spacing:.06em}
+
+/* Title-block table, used on the cover and on every sheet */
+.tb{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1.5px solid var(--ink)}
+.tb>div{padding:10px 14px;border-right:1px solid var(--rule);display:grid;gap:2px;min-width:0}
+.tb>div:last-child{border-right:0}
+.tb .v{font-family:var(--display);font-weight:600;font-size:22px;line-height:1.1}
+.tb .v small{font-family:var(--body);font-weight:400;font-size:13px;color:var(--ink-2);display:block;margin-top:2px;line-height:1.3}
+.cover .tb{grid-column:1/-1}
+
+/* Sheets */
+.sheet{background:var(--sheet);border:1.5px solid var(--ink);display:grid}
+.sheet-head{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:end;padding:22px 24px 18px;border-bottom:1.5px solid var(--ink)}
+.sheet-no{font-family:var(--mono);font-size:12px;background:var(--ink);color:var(--sheet);padding:6px 9px;align-self:start;white-space:nowrap}
+.sheet-head h2{font-size:clamp(32px,5vw,48px);text-transform:uppercase}
+.sheet-head .org{font-family:var(--mono);font-size:12px;color:var(--ink-2);text-align:right;white-space:nowrap}
+.sheet .tb{border-top:0;border-bottom:1px solid var(--rule)}
+.sheet .tb .v{font-size:18px}
+.sheet-body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:0}
+.notes{padding:22px 24px 26px;display:grid;gap:18px;align-content:start;border-right:1px solid var(--rule);min-width:0}
+.note h3{font-size:15px;font-family:var(--mono);font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.note ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.result{border:1.5px solid var(--accent);padding:14px 16px;display:grid;gap:4px}
+.result .big{font-family:var(--display);font-weight:700;font-size:40px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--sheet);align-content:start;align-self:start}
+.gallery figure{outline:1px solid var(--rule)}
+.gallery figure{margin:0;background:var(--sheet);display:grid;grid-template-rows:auto auto}
+.gallery figure.wide{grid-column:1/-1}
+.gallery img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;max-width:100%}
+.gallery figure.wide img{aspect-ratio:16/9}
+.gallery figcaption{font-family:var(--mono);font-size:11.5px;line-height:1.45;color:var(--ink-2);padding:8px 12px 10px}
+.gallery figcaption b{color:var(--ink);font-weight:500}
+
+/* Revision strip for the bracket */
+.revs{display:flex;flex-wrap:wrap;gap:6px;font-family:var(--mono);font-size:12px}
+.revs span{border:1px solid var(--ink);padding:3px 8px}
+.revs span.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+
+/* Skills */
+.skills{background:var(--sheet);border:1.5px solid var(--ink);display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.skills>div{padding:18px 20px 22px;border-right:1px solid var(--rule);display:grid;gap:10px;align-content:start;min-width:0}
+.skills>div:last-child{border-right:0}
+.skills h3{font-size:24px;text-transform:uppercase}
+.skills ul{list-style:none;margin:0;padding:0;display:grid;gap:5px;font-size:15.5px}
+.skills-title{grid-column:1/-1;border-bottom:1.5px solid var(--ink);padding:14px 20px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.skills-title h2{font-size:32px;text-transform:uppercase}
+
+footer{font-family:var(--mono);font-size:12px;color:var(--ink-2);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+
+@media screen and (max-width:820px){
+  .cover{grid-template-columns:1fr}
+  .cover-photo{border-left:0;border-top:1.5px solid var(--ink);min-height:0;aspect-ratio:4/3}
+  .sheet-body{grid-template-columns:1fr}
+  .notes{border-right:0;border-bottom:1px solid var(--rule)}
+  .tb,.skills{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tb>div:nth-child(2n),.skills>div:nth-child(2n+1){border-right:0}
+  .tb>div:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .skills>div{border-bottom:1px solid var(--rule)}
+  .sheet-head{grid-template-columns:1fr}
+  .sheet-head .org{text-align:left}
+  .sheet-no{justify-self:start}
+}
+@media screen and (max-width:440px){.gallery{grid-template-columns:1fr}.cover-main{padding:24px 20px}.notes,.sheet-head{padding-inline:18px}}
+
+/* Print / PDF: one sheet per page, fixed light palette */
+@page{size:letter landscape;margin:0.35in}
+@media print{
+  :root{--paper:#fff;--sheet:#fff;--ink:#15181b;--ink-2:#4a5157;--rule:#c5cbcc;--accent:#c8202b;--accent-ink:#fff}
+  body{font-size:10pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{max-width:none;padding:0;gap:0;display:block}
+  .cover,.sheet,.skills{break-inside:avoid}
+  .sheet,.skills{break-before:page}
+  .cover-photo{min-height:5.3in;aspect-ratio:auto}
+  .cover h1{font-size:68px}
+  .lede{font-size:13pt}
+  .sheet-head{padding:12px 16px 10px}
+  .sheet-head h2{font-size:38px}
+  .sheet .tb .v{font-size:16px}
+  .tb>div{padding:7px 12px}
+  .sheet-body{grid-template-columns:minmax(0,1fr) minmax(0,1.7fr)}
+  .notes{padding:12px 16px;gap:10px;font-size:9.5pt;line-height:1.45}
+  .note ul{gap:3px}
+  .result{padding:10px 12px}
+  .result .big{font-size:28px}
+  .gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .gallery figure.wide{grid-column:auto}
+  .gallery img,.gallery figure.wide img{aspect-ratio:auto;height:1.95in;object-fit:cover}
+  #next .gallery{grid-template-columns:1fr}
+  #next .gallery img{height:4.6in}
+  .gallery figcaption{font-size:7.5pt;padding:4px 8px 6px}
+  .skills h3{font-size:22px}
+  footer{margin-top:14px}
+}
+</style>
+
+<main class="wrap">
+
+<header class="cover">
+  <div class="cover-main">
+    <p class="label">Engineering Portfolio · Rev. Oct 2026</p>
+    <h1>Andrew <span>Lewis</span></h1>
+    <p class="lede">Mechanical Engineering student at UofL's J.B. Speed School. I design parts, prototype them, and put them into production, both on a plant floor and for my own aftermarket parts company. Looking for a Summer 2027 co-op in automotive, R&amp;D, or manufacturing.</p>
+    <div class="links">
+      <a href="https://www.linkedin.com/in/andrew-lewis-8468bb1a1/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <span>Louisville, KY area · open to relocation</span>
+    </div>
+  </div>
+  <figure class="cover-photo">
+    <img src="img/bracket-car.jpg" alt="3D-printed HamrTek bracket holding the factory climate control panel, installed in a 1996–98 Honda Civic dash">
+    <figcaption>HamrTek bracket, installed in an EK Civic</figcaption>
+  </figure>
+  <div class="tb">
+    <div><span class="label">School</span><span class="v">UofL Speed School<small>B.S. Mechanical Engineering, Math minor · Expected Dec 2028</small></span></div>
+    <div><span class="label">Found on the line</span><span class="v">~2 hr/day<small>Downtime exposed by my production counters</small></span></div>
+    <div><span class="label">Shipped</span><span class="v">25 units<small>HamrTek brackets sold in launch week</small></span></div>
+    <div><span class="label">Iterated</span><span class="v">7 revisions<small>Prototype prints before the bracket was right</small></span></div>
+  </div>
+</header>
+
+<!-- Sheet 1: Production counter -->
+<section class="sheet" id="counter">
+  <div class="sheet-head">
+    <span class="sheet-no">SHEET 1 / 5</span>
+    <h2>Production Line Counter</h2>
+    <span class="org">Unipak LLC · Manufacturing Engineering Intern</span>
+  </div>
+  <div class="tb">
+    <div><span class="label">Scope</span><span class="v">Design, build, install</span></div>
+    <div><span class="label">Hardware</span><span class="v">ESP32 · 24V I/O</span></div>
+    <div><span class="label">Enclosure</span><span class="v">SolidWorks · PLA+</span></div>
+    <div><span class="label">Status</span><span class="v">Running daily</span></div>
+  </div>
+  <div class="sheet-body">
+    <div class="notes">
+      <div class="note">
+        <h3>Problem</h3>
+        <p>The plant had no live view of what each line was producing or how long it sat idle, so downtime went unmeasured.</p>
+      </div>
+      <div class="note">
+        <h3>What I built</h3>
+        <ul>
+          <li>The lines had no sensor to count from, so each counter is a standalone unit with its own photoeye, powered from the 24V DC supply in the line's PLC cabinet. The sensor signal comes in through optocoupler isolation.</li>
+          <li>Enclosure and adjustable mount designed in SolidWorks and printed in PLA+.</li>
+          <li>Each node serves its own live dashboard (count, rate, shift timer, downtime) over plant Wi-Fi. A central page shows every line at once, with per-shift Excel export.</li>
+          <li>Two line counters built and installed, plus a third node for a checkweigher that reads its accept / over / under signals. The checkweigher node is built and bench-tested but not yet wired to the machine.</li>
+        </ul>
+      </div>
+      <div class="result">
+        <span class="label">Result</span>
+        <span class="big">~2 hr / day</span>
+        <p>of downtime found on the main cartoner line, traced to breaks starting early and the line restarting late. The counters are still running.</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure class="wide"><img src="img/counter-line.jpg" alt="Black 3D-printed counter enclosure with antenna mounted on a cartoner frame"><figcaption><b>Installed</b> on the main cartoner line, on an adjustable stand</figcaption></figure>
+      <figure><img src="img/counter-bench.jpg" alt="ESP32 on a breakout board wired to an optocoupler module and buck converter, powered by a 24V bench supply"><figcaption><b>Bench test</b> at 24V: optocoupler input, buck converter, ESP32</figcaption></figure>
+      <figure><img src="img/counter-cad.jpg" alt="SolidWorks assembly of the counter enclosure with internal components visible"><figcaption><b>CAD</b> enclosure assembly with board layout and mount</figcaption></figure>
+      <figure><img src="img/counter-enclosure.jpg" alt="Printed black enclosure with external antenna on its mount"><figcaption><b>Printed enclosure</b> with external antenna for plant Wi-Fi</figcaption></figure>
+      <figure><img src="img/counter-dash.jpg" alt="Node dashboard showing live count, shift timer, downtime, and target progress"><figcaption><b>Node dashboard:</b> count, shift timer, downtime, target</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Sheet 2: Labeling jigs -->
+<section class="sheet" id="jigs">
+  <div class="sheet-head">
+    <span class="sheet-no">SHEET 2 / 5</span>
+    <h2>Container Labeling Jigs</h2>
+    <span class="org">Unipak LLC · Manufacturing Engineering Intern</span>
+  </div>
+  <div class="tb">
+    <div><span class="label">Scope</span><span class="v">Fixture design</span></div>
+    <div><span class="label">CAD</span><span class="v">SolidWorks</span></div>
+    <div><span class="label">Material</span><span class="v">PETG, FDM</span></div>
+    <div><span class="label">Status</span><span class="v">Customer approved</span></div>
+  </div>
+  <div class="sheet-body">
+    <div class="notes">
+      <div class="note">
+        <h3>Problem</h3>
+        <p>Some containers couldn't be labeled by the lines, so workers applied labels by hand. Placement varied from piece to piece, and a customer sent product back.</p>
+      </div>
+      <div class="note">
+        <h3>What I built</h3>
+        <ul>
+          <li>Fixtures that nest the container and locate the label, so every label lands in the same place.</li>
+          <li>Modeled around the actual container in SolidWorks, then printed in PETG for durability on the floor.</li>
+          <li>Instructions printed into the part in English and Spanish (“Label face down / Etiqueta hacia abajo”) for the operators who use it.</li>
+        </ul>
+      </div>
+      <div class="result">
+        <span class="label">Result</span>
+        <p>The customer reviewed the jigs on-site and approved them for use. Unipak then asked for a second version for its smaller containers.</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure class="wide"><img src="img/jig-label.jpg" alt="Printed labeling jig with bilingual text 'Label face down / Etiqueta hacia abajo' molded into the plate"><figcaption><b>Final jig</b> with bilingual operator instructions printed into the part</figcaption></figure>
+      <figure><img src="img/jig-bottle.jpg" alt="Hand holding the plastic jug next to the jig model on screen"><figcaption><b>Designed to the part:</b> the real container against the CAD</figcaption></figure>
+      <figure><img src="img/jig-cad.jpg" alt="SolidWorks model of the jig cradle"><figcaption><b>CAD</b> cradle in SolidWorks</figcaption></figure>
+      <figure><img src="img/jig-print.jpg" alt="Jig printing on an enclosed 3D printer bed"><figcaption><b>Printing</b> the cradle in PETG</figcaption></figure>
+      <figure><img src="img/jig-pair.jpg" alt="Two printed jig sections on a desk"><figcaption><b>Printed set</b> ready for the floor</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Sheet 3: HamrTek bracket -->
+<section class="sheet" id="hamrtek">
+  <div class="sheet-head">
+    <span class="sheet-no">SHEET 3 / 5</span>
+    <h2>EK Civic Climate Control Bracket</h2>
+    <span class="org">HamrTek · Founder &amp; Design Engineer</span>
+  </div>
+  <div class="tb">
+    <div><span class="label">Fits</span><span class="v">1996–98 Honda Civic</span></div>
+    <div><span class="label">CAD</span><span class="v">SolidWorks</span></div>
+    <div><span class="label">Material</span><span class="v">ABS, FDM</span></div>
+    <div><span class="label">Status</span><span class="v">In production</span></div>
+  </div>
+  <div class="sheet-body">
+    <div class="notes">
+      <div class="note">
+        <h3>Problem</h3>
+        <p>Owners who relocate the factory climate control panel in a 1996–98 Civic need a secure, clean-looking way to mount it in its new spot.</p>
+      </div>
+      <div class="note">
+        <h3>What I built</h3>
+        <ul>
+          <li>A bracket that holds the OEM climate control panel and bolts in with factory-style hardware.</li>
+          <li>Reverse-engineered the mounting geometry from the original parts, then checked fit in the car after every revision.</li>
+          <li>ABS for heat resistance inside a car that sits in the sun. I handle design, printing, quality checks, and sales myself.</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Revision history</h3>
+        <div class="revs" aria-label="Seven prototype revisions, A through G">
+          <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span class="on">G · released</span>
+        </div>
+      </div>
+      <div class="result">
+        <span class="label">Result</span>
+        <span class="big">25 sold</span>
+        <p>in the first week after launch in August 2026. Printing and shipping that backlog took about a month.</p>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure class="wide"><img src="img/bracket-detail.jpg" alt="Bracket assembled with the climate control panel and the factory tray, screws visible"><figcaption><b>Assembled</b> with the factory panel and tray, using OEM-style fasteners</figcaption></figure>
+      <figure><img src="img/bracket-proto.jpg" alt="Minimal printed fit-check part showing only the mounting tabs"><figcaption><b>Early fit check:</b> mounting features only</figcaption></figure>
+      <figure><img src="img/bracket-cad.jpg" alt="SolidWorks model of the bracket frame"><figcaption><b>CAD</b> bracket frame</figcaption></figure>
+      <figure class="wide"><img src="img/bracket-print.jpg" alt="Printed bracket holding the climate control panel"><figcaption><b>Production print</b> holding the climate control panel</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Sheet 4: In development -->
+<section class="sheet" id="next">
+  <div class="sheet-head">
+    <span class="sheet-no">SHEET 4 / 5</span>
+    <h2>EK Center Console Parts</h2>
+    <span class="org">HamrTek · In development</span>
+  </div>
+  <div class="tb">
+    <div><span class="label">Fits</span><span class="v">EK Civic, K-swap &amp; stock</span></div>
+    <div><span class="label">CAD</span><span class="v">SolidWorks</span></div>
+    <div><span class="label">Reference</span><span class="v">iPhone 3D scan</span></div>
+    <div><span class="label">Status</span><span class="v">Modeling</span></div>
+  </div>
+  <div class="sheet-body">
+    <div class="notes">
+      <div class="note">
+        <h3>Problem</h3>
+        <p>Swapping a K-series engine into an EK Civic moves the shifter and its cables into the cupholder's space. Most owners cut the cupholder out or remove it, which leaves an open hole in the console.</p>
+      </div>
+      <div class="note">
+        <h3>What I'm building</h3>
+        <ul>
+          <li>A tray that fills the cupholder opening and routes and hides the shifter cables underneath it.</li>
+          <li>Scanned the factory center console myself with an iPhone 13 Pro Max, then designed against the scan so the tray matches the OEM surfaces and openings.</li>
+          <li>A redesigned cupholder for stock, non-swapped cars is also in progress. The factory cupholder holds drinks poorly and is a common complaint among owners; the redesign replaces it in the same space.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure class="wide"><img src="img/console-scan.jpg" alt="My 3D scan of the 1996–98 Civic center console in SolidWorks with the tray surface being modeled in the cupholder opening"><figcaption><b>Modeling</b> the delete tray inside my iPhone scan of the factory console</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Sheet 5: EK build -->
+<section class="sheet" id="ek">
+  <div class="sheet-head">
+    <span class="sheet-no">SHEET 5 / 5</span>
+    <h2>1996 Civic Hatchback Build</h2>
+    <span class="org">Personal project · Engine build, swap &amp; wiring</span>
+  </div>
+  <div class="tb">
+    <div><span class="label">Chassis</span><span class="v">1996 Honda Civic (EK)</span></div>
+    <div><span class="label">Engine</span><span class="v">LS/VTEC, forged</span></div>
+    <div><span class="label">Work</span><span class="v">Built by me, start to finish</span></div>
+    <div><span class="label">Status</span><span class="v">Running</span></div>
+  </div>
+  <div class="sheet-body">
+    <div class="notes">
+      <div class="note">
+        <h3>Why it's here</h3>
+        <p>Building this engine is what made me want to study mechanical engineering. My HamrTek parts grew out of working on this car.</p>
+      </div>
+      <div class="note">
+        <h3>What I did</h3>
+        <ul>
+          <li>Built an LS/VTEC engine: a B18B1 bottom end with a B16A VTEC head. I assembled both the bottom end and the top end myself, with forged internals, ARP head studs, and a Cometic head gasket.</li>
+          <li>Measured and verified every clearance and tolerance during assembly against spec.</li>
+          <li>Installed the engine and wired a coil-on-plug ignition conversion and a new ECU into the chassis harness. The engine is built and running.</li>
+          <li>TIG-welded a repair on a section of the exhaust, working alongside an experienced welder.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="gallery">
+      <figure><img src="img/ek-profile.jpg" alt="White 1996 Honda Civic hatchback in side profile on a rural road with autumn trees"><figcaption><b>The car:</b> 1996 Civic hatchback</figcaption></figure>
+      <figure><img src="img/ek-block.jpg" alt="Engine block on a stand with ARP head studs and a multi-layer steel head gasket installed"><figcaption><b>Bottom end</b> with ARP head studs and Cometic gasket</figcaption></figure>
+      <figure><img src="img/ek-installed.jpg" alt="Assembled engine with red valve cover installed in the stripped and painted engine bay, hoist chain in front"><figcaption><b>Installed</b> in the cleaned-up engine bay</figcaption></figure>
+      <figure><img src="img/ek-cop.jpg" alt="Top view of the red DOHC VTEC valve cover with four coil-on-plug ignition coils wired in"><figcaption><b>Coil-on-plug</b> ignition conversion</figcaption></figure>
+      <figure><img src="img/ek-ecu.jpg" alt="ECU and coil pack retrofit module with sleeved wiring harness in the passenger footwell"><figcaption><b>ECU and harness</b> wiring with coil-on-plug retrofit</figcaption></figure>
+      <figure><img src="img/ek-weld.jpg" alt="TIG weld practice bead on scrap steel"><figcaption><b>TIG practice pass</b> on scrap before welding the exhaust</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <div class="skills-title"><h2>Tools &amp; Skills</h2><span class="label">Formula SAE · Baja SAE</span></div>
+  <div><h3>Design</h3><ul><li>SolidWorks parts &amp; assemblies</li><li>Reverse engineering &amp; 3D scanning</li><li>Fixture &amp; jig design</li><li>Design for FDM printing</li></ul></div>
+  <div><h3>Fabrication</h3><ul><li>FDM printing: ABS, PETG, PLA+</li><li>Print tuning &amp; tolerance control</li><li>Iterative fit testing</li><li>Small-batch production</li><li>Engine assembly &amp; tolerance checks</li></ul></div>
+  <div><h3>Electronics</h3><ul><li>ESP32 embedded systems</li><li>24V industrial signals</li><li>Optocoupler isolation</li><li>Bench testing &amp; debugging</li><li>Automotive wiring &amp; ECU install</li></ul></div>
+  <div><h3>Plant floor</h3><ul><li>Line troubleshooting &amp; repair</li><li>PM schedules for 5 line types</li><li>Downtime analysis</li><li>Working with operators &amp; maintenance</li></ul></div>
+</section>
+
+<footer>
+  <span>Andrew Lewis · J.B. Speed School of Engineering, University of Louisville</span>
+  <span>Photos used with Unipak's permission</span>
+</footer>
+
+</main>
+
+</body>
+</html>
